@@ -1,4 +1,4 @@
-import { SET_REQUEST, SET_LOGIN_SUCCESS, SET_FAILED,SET_LOGOUT ,SET_TOKEN_INVALID} from '../../mutations-types';
+import { SET_REQUEST, SET_LOGIN_SUCCESS, SET_FAILED,SET_LOGOUT} from '../../mutations-types';
 
 export default {
   [SET_REQUEST](state, data) {
