@@ -64,10 +64,8 @@ export default {
       };
       this.LOGIN_REQUEST(user).then(()=>{
         this.dialog = false;
-        console.log("exito");
       }).catch(()=>{
         this.dialog = false;
-        console.log("fallo");
       })
     }
   }
