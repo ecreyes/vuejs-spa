@@ -113,7 +113,7 @@ export default {
     ...mapState("auth", ["isLogged", "user"])
   },
   methods: {
-    ...mapMutations("auth", [SET_LOGOUT])
+    ...mapMutations([SET_LOGOUT])
   }
 };
 </script>

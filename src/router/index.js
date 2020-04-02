@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
     let current_time = new Date().getTime() / 1000;
     //expiro
     if (current_time > exp) {
-      store.commit(`auth/${SET_LOGOUT}`, null, { root: true });
+      store.commit(SET_LOGOUT);
       next("/");
     } else {
       next();

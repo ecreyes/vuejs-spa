@@ -1,18 +1,16 @@
-import { SET_REQUEST, SET_LOGIN_SUCCESS, SET_FAILED} from '../../mutations-types';
+import { SET_USERS_SUCCESS, SET_REQUEST, SET_FAILED } from "../../mutations-types";
 
 export default {
   [SET_REQUEST](state, data) {
     state.isFetching = data.isFetching;
   },
-  [SET_LOGIN_SUCCESS](state, data) {
-    state.user = data.payload.userDB;
-    state.token = data.payload.token;
+  [SET_USERS_SUCCESS](state, data) {
+    state.users = data.payload.users;
     state.isFetching = data.isFetching;
     state.error = data.error;
-    state.isLogged = true;
   },
   [SET_FAILED](state, data) {
     state.isFetching = data.isFetching;
     state.error = data.error;
   }
-}
+}  
