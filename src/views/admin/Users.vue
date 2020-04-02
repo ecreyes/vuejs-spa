@@ -1,15 +1,19 @@
 <template>
   <v-container>
-    <h1 class="display-1">Users page</h1>
+    <dataTable :users="users"/>    
   </v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
 import { ADMIN_USERS_REQUEST } from "../../store/actions-types";
+import DataTable from "@/components/DataTable";
 
 export default {
   name: "Users",
+  components:{
+    DataTable
+  },
   mounted(){
     this.ADMIN_USERS_REQUEST(this.token).then(()=>{
       console.log("exito users")
@@ -18,7 +22,8 @@ export default {
     });
   },
   computed: {
-    ...mapState("auth", ["isLogged", "token"])
+    ...mapState("auth", ["isLogged", "token"]),
+    ...mapState("admin", ["users"])
   },
   watch: {
     isLogged() {

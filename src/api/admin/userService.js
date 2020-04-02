@@ -1,5 +1,4 @@
 import { NODE_SERVER_URL } from './../config';
-import store from "../../store";
 import axios from 'axios';
 
 export const getAllUsers = (token) => {
