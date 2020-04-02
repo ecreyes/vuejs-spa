@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from "../store";
+import { SET_LOGOUT } from "../store/mutations-types";
 
 Vue.use(VueRouter)
 
@@ -17,8 +18,8 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "users" */ '../views/admin/Users.vue'),
-    beforeEnter:(to,from,next)=>{
-      if(store.state.auth.isLogged && store.state.auth.user.role=="ADMIN_ROLE")
+    beforeEnter: (to, from, next) => {
+      if (store.state.auth.isLogged && store.state.auth.user.role == "ADMIN_ROLE")
         next();
       else
         next("/")
@@ -31,5 +32,33 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+//verificacion del token antes de acceder a alguna ruta
+router.beforeEach((to, from, next) => {
+  if (store.state.auth.token != "") {
+    let exp = parseJwtExp(store.state.auth.token);
+    let current_time = new Date().getTime() / 1000;
+    //expiro
+    if (current_time > exp) {
+      store.commit(`auth/${SET_LOGOUT}`, null, { root: true });
+      next("/");
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+})
+
+const parseJwtExp = (token) => {
+  try {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64)).exp;
+  } catch (error) {
+    return false;
+  }
+};
+
 
 export default router
