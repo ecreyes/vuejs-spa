@@ -14,12 +14,8 @@ export default {
   components:{
     DataTable
   },
-  mounted(){
-    this.ADMIN_USERS_REQUEST(this.token).then(()=>{
-      console.log("exito users")
-    }).catch(()=>{
-      console.log("fallo users xd");
-    });
+  async mounted(){
+    await this.ADMIN_USERS_REQUEST(this.token);
   },
   computed: {
     ...mapState("auth", ["isLogged", "token"]),

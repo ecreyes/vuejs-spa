@@ -69,13 +69,10 @@ export default {
         password: this.password
       };
       this.REGISTER_REQUEST(user).then(()=>{
-        console.log("registro e inicio de sesión exitoso");
         this.dialog = false;
       }).catch(()=>{
-        console.log("registro e inicio de sesión fallido");
         this.dialog = false;
       });
-      console.log(user);
     }
   }
 };

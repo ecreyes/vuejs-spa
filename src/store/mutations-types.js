@@ -6,3 +6,4 @@ export const SET_LOGOUT = "SET_LOGOUT";
 
 //ADMIN
 export const SET_USERS_SUCCESS = "SET_USERS_SUCCESS";
+export const SET_STATE_USER = "SET_STATE_USER";
