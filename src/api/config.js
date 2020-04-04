@@ -1,1 +1,1 @@
-export const NODE_SERVER_URL = 'http://192.168.1.82:2000';
+export const NODE_SERVER_URL = 'http://localhost:2000';
