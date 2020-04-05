@@ -90,15 +90,20 @@ export default {
       items: [
         {
           icon: "mdi-inbox",
-          text: "Home",
+          text: "Inicio",
           route: "/"
+        },
+        {
+          icon: "mdi-star",
+          text: "Mis cursos",
+          route: "/courses"
         }
       ],
       adminItems: [
         {
           key: "key-users",
           icon: "mdi-star",
-          text: "Users",
+          text: "Usuarios",
           route: "/users"
         }
       ],

@@ -9,7 +9,18 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "users" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+  },
+  {
+    path: '/courses',
+    name: 'Courses',
+    component: () => import(/* webpackChunkName: "courses" */ '../views/Courses.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.auth.isLogged)
+        next();
+      else
+        next("/")
+    }
   },
   {
     path: '/users',
