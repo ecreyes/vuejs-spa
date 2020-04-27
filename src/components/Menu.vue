@@ -96,7 +96,7 @@ export default {
         {
           icon: "mdi-star",
           text: "Área personal",
-          route: "/dashboard"
+          route: "/dashboard/courses"
         }
       ],
       adminItems: [

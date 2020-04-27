@@ -13,8 +13,23 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'Dashboard',
     component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
+    children: [
+      {
+        path: 'profile',
+        name: "Profile",
+        component: () => import(/* webpackChunkName: "dashboard-profile" */ '../components/Profile.vue'),
+      },
+      {
+        path: 'courses',
+        name: "Courses",
+        component: () => import(/* webpackChunkName: "dashboard-default" */ '../components/Courses.vue')
+      },
+      {
+        path: '',
+        component: () => import(/* webpackChunkName: "dashboard-default" */ '../components/Courses.vue')
+      },
+    ],
     beforeEnter: (to, from, next) => {
       if (store.state.auth.isLogged)
         next();
