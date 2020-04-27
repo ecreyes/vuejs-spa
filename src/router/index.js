@@ -12,9 +12,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
-    path: '/courses',
-    name: 'Courses',
-    component: () => import(/* webpackChunkName: "courses" */ '../views/Courses.vue'),
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
     beforeEnter: (to, from, next) => {
       if (store.state.auth.isLogged)
         next();
@@ -35,7 +35,8 @@ const routes = [
       else
         next("/")
     }
-  }
+  },
+  { path: "*", component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue') }
 ]
 
 const router = new VueRouter({

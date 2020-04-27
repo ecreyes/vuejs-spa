@@ -95,8 +95,8 @@ export default {
         },
         {
           icon: "mdi-star",
-          text: "Mis cursos",
-          route: "/courses"
+          text: "Área personal",
+          route: "/dashboard"
         }
       ],
       adminItems: [
